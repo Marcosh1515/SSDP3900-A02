@@ -21,7 +21,7 @@ This project includes a development environment with hot reload capabilities usi
 
    ```bash
    git clone https://github.com/Marcosh1515/SSDP3900-A02.git
-   cd nft_dev
+   cd SSDP3900-A02
    ```
 
 2. Start the development container:
@@ -38,7 +38,7 @@ This project includes a development environment with hot reload capabilities usi
 
 1. Create a new GitHub repository
 
-   - Go to [GitHub](https://github.com) and create a new repository named `nft_dev`
+   - Go to [GitHub](https://github.com) and create a new repository named `SSDP3900-A02`
    - Make the repository public for GitHub Pages
 
 2. Update your local repository
