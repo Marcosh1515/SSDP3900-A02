@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/ssdp3900-a02/',
+  base: '/SSDP3900-A02/',
   css: {
     devSourcemap: true,
   },
