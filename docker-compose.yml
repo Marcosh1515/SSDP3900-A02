@@ -1,0 +1,13 @@
+services:
+  ssdp3900-a02:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: ssdp3900-a02
+    ports:
+      - '5173:5173'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development

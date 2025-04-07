@@ -1,15 +1,12 @@
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 
 function App() {
   return (
     <>
-      <h1>Vite + React</h1>
-      <img src="/marcFace.jpg" alt="" />
-      <p>
-        Edit <code>src/App.jsx</code> and save to test HMR
-      </p>
+      <h3>Made by Marc-André Baron-Campeau</h3>
+      <h5>There is nothing else on this public page.</h5>
+      <img src="/bigWilly.png" />
+      <h1>The Fresh Prince</h1>
     </>
   );
 }
