@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+# when does this run
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# what permissions it has
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# rules about concurrent requests
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+# what it actually does
+jobs:
+  # build step
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # checks out the repo for the workflow to access it
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      # install pnpm on the machine
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      # install node.js on the machine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+      # install dependencies from application packages
+      - name: Install dependencies
+        run: pnpm install
+      # builds the application
+      - name: Build application
+        run: pnpm build
+      # make build artifact available for the next steps to use
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+  # deploy step
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+    # wait for last step to be done
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # only one step, deploy to GitHub Pages, set the id to development to get the right artifact
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
